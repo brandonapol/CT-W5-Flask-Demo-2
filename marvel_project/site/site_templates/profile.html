@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="vidcontainer">
+        <h1>hey whatever profile </h1>
+
+    </div>
+
+    <header class="hero-section">
+        <h3 class="header-text">Header text section on profile!</h3>
+    </header>
+
+
+    
+    <div class="container">
+        <h3>Here are your profile details</h3>
+        <ul class="list-group">
+            <li class="list-group-item">Email: {{ current_user.email }}</li>
+            <li class="list-group-item">Token: {{ current_user.token }} </li>
+            
+             <!--TODO: Add Access Key-->
+            
+        </ul>
+    </div>
+{% endblock %}
