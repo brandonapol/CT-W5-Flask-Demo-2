@@ -7,25 +7,18 @@ from flask_login import login_user, logout_user, LoginManager, current_user, log
 
 auth = Blueprint('auth', __name__, template_folder='auth_templates')
 
-# For each user you have to make a function to process their login data and create a database for them
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
-    # This is what makes the form include the text areas and submit button
     form = UserLoginForm()
-
+    # print('yee haw')
     try:
         if request.method == 'POST' and form.validate_on_submit():
-            # sends email and password back to flask_forms to check that they are formatted correctly:
-            # class UserLoginForm(FlaskForm):
-                # email = StringField('Email', validators = [DataRequired(), Email()])
-                # password = PasswordField('Password', validators = [DataRequired()])
-                # submit_button = SubmitField()
             email = form.email.data
             password = form.password.data
             print(email, password)
-            # sends email and password data to models.py class User which will be populated in the database
-            user = User(email, password = password)
 
+            user = User(email, password = password)
+            # print(user)
             db.session.add(user)
             db.session.commit()
 
