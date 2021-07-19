@@ -8,6 +8,7 @@ from flask_login import UserMixin
 from flask_login import LoginManager
 from flask_marshmallow import Marshmallow 
 import secrets
+from icecream import ic
 
 # set variables for class instantiation
 login_manager = LoginManager()
@@ -23,6 +24,7 @@ def load_user(user_id):
 # Creating a database for users
 class User(db.Model, UserMixin):
     id = db.Column(db.String, primary_key=True)
+    #We never take first or last name!!!
     first_name = db.Column(db.String(150), nullable=True, default='')
     last_name = db.Column(db.String(150), nullable = True, default = '')
     # takes email from the signup.html page via flask forms
