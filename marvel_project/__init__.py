@@ -3,7 +3,7 @@ from marvel_project.config import Config
 from .api.routes import api
 from .site.routes import site
 from .authentication.routes import auth
-from Flask_Cors import CORS
+from flask_cors import CORS
 
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -11,6 +11,7 @@ from marvel_project.models import db as root_db, login_manager, ma
 from marvel_project.helpers import JSONEncoder
 
 app = Flask(__name__)
+CORS(app)
 
 app.register_blueprint(site)
 app.register_blueprint(auth)
@@ -23,6 +24,6 @@ login_manager.init_app(app)
 ma.init_app(app)
 migrate = Migrate(app, root_db)
 
-CORS(app)
+
 
 import marvel_project.models
